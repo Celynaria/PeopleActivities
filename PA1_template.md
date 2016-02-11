@@ -1,8 +1,6 @@
-# People Activities
+# Monitoring People Activity
 Wanchana Ekakkharanon  
 February 10, 2016  
-
-# Monitoring People Activity
 All of the functions I used in this script are from a base package of R so, anyone should be able to reproduce it without any problems.
 
 ##Loading and preprocessing the data
@@ -33,7 +31,7 @@ head(input)
 ## 6    NA 2012-10-01       25
 ```
 
-## What is mean total number of steps taken per day?
+##What is mean total number of steps taken per day?
 The total steps of each day can be computed by "aggregate.data.frame()" function. This function required a list of columns that you want to group them togather and then compute it with a specific function according to a given function name .
 
 
@@ -76,7 +74,7 @@ summary(totalStep_day$steps)
 ##      41    8841   10760   10770   13290   21190       8
 ```
 
-## What is the average daily activity pattern?
+##What is the average daily activity pattern?
 This time we need to find a daily pattern, the look at average of steps on all time intervals might be useful. we can use "aggregate.data.frame()" function find average of steps on all time intervals with only a little adjustment in some arguments as below.
 
 
@@ -124,7 +122,7 @@ head(temp[2:3])
 ## 101 171.1509 08:20
 ```
 
-# Looking at the number of rows that have missing values. 
+##Looking at the number of rows that have missing values. 
 Next we will try to fill in missing value and look at the effects that might happen when we ignor them. The number of incomplete rows is 2304 as show below.
 
 ```r
@@ -136,7 +134,7 @@ sum(!complete.cases(input))
 ## [1] 2304
 ```
 
-## Imputing missing values
+##Imputing missing values
 Now, I will try to create a new dataset with the original dataset and fill missing values with Average steps of all time intervals and again padding intervals to 4 digits. 
 
 ```r
@@ -187,7 +185,7 @@ summary(new_totalStep_day$steps)
 
 After lookin into a summary of the new dataset. Mean of total steps per day still be the same at 10700 because I use average of steps of each interval to fill a missing value so, it's pretty obvious. The median is changed from 10760 to 10770 becouse the number of observasions is increased.
 
-## Are there differences in activity patterns between weekdays and weekends?
+##Are there differences in activity patterns between weekdays and weekends?
 To see a better picture of activity in each day, I have subset the new dataset into 2 by weekends and weekdays. First I need to add indicators for these 2 type of days as follow.
 
 ```r
